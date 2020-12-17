@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { User } from '../entity/User';
 
 @Component({
@@ -9,7 +9,10 @@ import { User } from '../entity/User';
 export class UserCardComponent implements OnInit {
   nom: string;
   prenom: string;
-  @Output() nombre_enfants: number;
+  nombre_enfants: number;
+  @Input()user_index:number;
+  @Output() index = new EventEmitter<number>();
+  @Output() user_up= new EventEmitter<User>();
   @Input()user: User;
   constructor() {
    }
@@ -18,5 +21,15 @@ export class UserCardComponent implements OnInit {
     this.prenom=this.user.prenom;
     this.nombre_enfants=this.user.nombre_enfants;
   }
-
+  sendIndex(){
+    this.index.emit(this.user_index);
+  }
+  sendLastName(){
+    this.user.nom=this.nom;
+    this.user_up.emit(this.user);
+  }
+  sendFirstName(){
+    this.user.prenom=this.prenom;
+    this.user_up.emit(this.user);
+  }
 }

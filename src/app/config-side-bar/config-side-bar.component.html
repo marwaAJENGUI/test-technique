@@ -1,4 +1,5 @@
 <p>config-side-bar works!</p>
-<input type="text" [(ngModel)]="nom">{{nom}}<br>
-<input type="text" [(ngModel)]="prenom">{{prenom}}<br>
+ {{user_index}}<br>
+<input type="text" [(ngModel)]="nom" (change)="sendLastName()">{{nom}}<br>
+<input type="text" [(ngModel)]="prenom" (change)="sendFirstName()">{{prenom}}<br>
 <input type="number" value={{nombre_enfants}} disabled=true><br>

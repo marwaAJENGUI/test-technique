@@ -11,11 +11,21 @@ export class AppComponent implements OnInit{
   title = 'test-technique';
   listUsers:User[]=[];
   user:User;
+  index:number;
   constructor(private userService : ApiUsersService){}
   ngOnInit(): void {
     this.LoadListUsersFromJson();
   }
-
+  getIndex(i:number){
+    this.index=i;
+    this.user=this.listUsers[this.index];
+    console.log("idex="+this.index);
+    console.log(this.user);
+  }
+  updateUser(user:User){
+    this.listUsers[this.index]=user;
+    console.log(this.listUsers);
+  }
   /*
   * @ToDo
   * */

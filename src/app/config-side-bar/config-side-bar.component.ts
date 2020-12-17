@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, Output,EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { User } from '../entity/User';
 
 @Component({
@@ -6,17 +6,30 @@ import { User } from '../entity/User';
   templateUrl: './config-side-bar.component.html',
   styleUrls: ['./config-side-bar.component.css']
 })
-export class ConfigSideBarComponent implements OnInit {
-  @Output() nom: string;
-  @Output() prenom: string;
+export class ConfigSideBarComponent implements OnChanges {
+  nom: string;
+  prenom: string;
   nombre_enfants: number;
+  @Input()user_index:number;
+  @Output() user_up= new EventEmitter<User>();
   @Input()user: User;
   constructor() {
    }
-  ngOnInit(): void {
-    this.nom=this.user.nom;
-    this.prenom=this.user.prenom;
-    this.nombre_enfants=this.user.nombre_enfants;
+  ngOnChanges(changes: SimpleChanges){
+    this.nom=changes['user'].currentValue.nom;
+    this.prenom=changes['user'].currentValue.prenom;
+    this.nombre_enfants=changes['user'].currentValue.nombre_enfants;
+  
+   console.log(changes['user'])
+   console.log(changes['user'].currentValue)
+  }
+  sendLastName(){
+    this.user.nom=this.nom;
+    this.user_up.emit(this.user);
+  }
+  sendFirstName(){
+    this.user.prenom=this.prenom;
+    this.user_up.emit(this.user);
   }
 
 }

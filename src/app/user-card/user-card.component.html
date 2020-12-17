@@ -1,4 +1,10 @@
 <p>user-card works!</p>
-<input type="text" [(ngModel)]="nom">{{nom}}<br>
+{{user_index}}<br>
+<input type="text" [(ngModel)]="nom" (change)="sendLastName()" (focus)="  sendIndex()" >{{nom}}<br>
+<input type="text" [(ngModel)]="prenom" (change)="sendFirstName()" (focus)="  sendIndex()" >{{prenom}}<br>
+<input type="number" value={{nombre_enfants}} disabled=true><br>
+ <!-- 
+<input type="text" [(ngModel)]="nom" (change)="sendName()">{{nom}}<br>
 <input type="text" [(ngModel)]="prenom">{{prenom}}<br>
 <input type="number" value={{nombre_enfants}} disabled=true><br>
+ -->
