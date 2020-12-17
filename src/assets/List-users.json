@@ -1,0 +1,5 @@
+[
+    {"nom": "nom 1", "prenom": "prenom 1", "nombre_enfants": 1},
+    {"nom": "nom 2", "prenom": "prenom 2", "nombre_enfants": 2},
+    {"nom": "nom 3", "prenom": "prenom 3", "nombre_enfants": 3}    
+]
