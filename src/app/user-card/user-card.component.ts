@@ -24,12 +24,9 @@ export class UserCardComponent implements OnInit {
   sendIndex(){
     this.index.emit(this.user_index);
   }
-  sendLastName(){
-    this.user.nom=this.nom;
-    this.user_up.emit(this.user);
-  }
-  sendFirstName(){
-    this.user.prenom=this.prenom;
+
+  sendChildren(){
+    this.user.nombre_enfants=this.nombre_enfants;
     this.user_up.emit(this.user);
   }
 }
