@@ -1,18 +1,21 @@
-<p>app works!</p>
+<br>
 <app-config-side-bar  *ngIf="index!=undefined"
     [user]="user" 
     [user_index]="index" 
     (user_up)=updateUser($event)
 ></app-config-side-bar>
-<table table style="width:70%">
-    <tr>
-        <td style="width:50%"><button (click)="LoadListUsersFromJson()" class="btn btn-success">Upload</button></td>
-        <td style="width:50%"><button (click)="SaveListUsersInJson()" class="btn btn-success">Save</button></td>
-    </tr>
-</table>
-<app-user-card  *ngFor="let u of listUsers;let i= index"
-    [user]="u" 
-    [user_index]="i" 
-    (index)=getIndex($event)
-    (user_up)=updateUser($event)
-></app-user-card>
+<div class="content">
+    <table table style="width:70%">
+        <tr>
+            <td style="width:50%"><button (click)="LoadListUsersFromJson()" class="btn btn-success">Upload</button></td>
+            <td style="width:50%"><button (click)="SaveListUsersInJson()" class="btn btn-success">Save</button></td>
+        </tr>
+    </table>
+    <br>
+    <app-user-card *ngFor="let u of listUsers;let i= index"
+        [user]="u" 
+        [user_index]="i" 
+        (index)=getIndex($event)
+        (user_up)=updateUser($event)
+    ></app-user-card>
+</div>
