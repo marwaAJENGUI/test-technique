@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from './entity/User';
 import { ApiUsersService } from './services/api-users.service';
+import { ComponentCommunicationService } from './services/component-communication.service';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,11 @@ export class AppComponent implements OnInit{
   listUsers:User[]=[];
   user:User;
   index:number;
-  constructor(private userService : ApiUsersService){}
+  comUser:User;
+  constructor(private userService : ApiUsersService,private data: DataService){}
   ngOnInit(): void {
     this.LoadListUsersFromJson();
+    this.data.currentMessage.subscribe(message => this.comUser = message)
   }
   getIndex(i:number){
     this.index=i;
@@ -24,7 +28,7 @@ export class AppComponent implements OnInit{
   }
   updateUser(user:User){
     this.listUsers[this.index]=user;
-    console.log(this.listUsers);
+    this.data.changeMessage(this.user)
   }
   /*
   * @ToDo
@@ -33,7 +37,8 @@ export class AppComponent implements OnInit{
     this.userService.getUsers().subscribe(res=>(res.forEach((value, index) => {
       this.listUsers[index]=value;
   })));
-  console.log(this.listUsers)
+  this.index=undefined;
+  console.log(this.listUsers);
   }
 
   /*

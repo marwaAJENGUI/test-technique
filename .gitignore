@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#file
+/src/app/services/component-communication.service.spec.ts
+/src/app/services/component-communication.service.ts

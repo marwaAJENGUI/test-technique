@@ -26,4 +26,10 @@ export class User{
   set nombre_enfants(value) {
     this._nombre_enfants = value;
   }
+  constructor(nom:string,prenom:string,nombre_enfants:number){
+    this._nom=nom;
+    this._prenom=prenom;
+    this._nombre_enfants=nombre_enfants;
+
+  }
 }

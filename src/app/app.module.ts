@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfigSideBarComponent } from './config-side-bar/config-side-bar.component';
 import { UserCardComponent } from './user-card/user-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './services/data.service';
+import { ComponentCommunicationService } from './services/component-communication.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    
+		ReactiveFormsModule,    
   ],
-  providers: [],
+  providers: [
+    DataService,
+    ComponentCommunicationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

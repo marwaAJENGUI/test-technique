@@ -1,10 +1,10 @@
 <p>app works!</p>
-    <app-config-side-bar  *ngIf="index!=undefined"
+<app-config-side-bar  *ngIf="index!=undefined"
     [user]="user" 
     [user_index]="index" 
     (user_up)=updateUser($event)
 ></app-config-side-bar>
-
+<button (click)="LoadListUsersFromJson()">Upload</button>
 <app-user-card  *ngFor="let u of listUsers;let i= index"
     [user]="u" 
     [user_index]="i" 

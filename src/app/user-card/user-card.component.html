@@ -4,6 +4,7 @@
 <input type="text" value={{nom}}  disabled=true  >{{nom}} <br>
 <input type="text" value={{prenom}}  disabled=true  >{{prenom}}<br>
 <input type="number" [(ngModel)]="nombre_enfants"  (change)="sendChildren()" (focus)="sendIndex()" >{{nombre_enfants}}<br> 
+
 <!-- 
 <input type="text" [(ngModel)]="nom" (change)="sendName()">{{nom}}<br>
 <input type="text" [(ngModel)]="prenom">{{prenom}}<br>
