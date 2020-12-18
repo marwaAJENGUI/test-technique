@@ -29,6 +29,7 @@ export class AppComponent implements OnInit{
   updateUser(user:User){
     this.listUsers[this.index]=user;
     this.data.changeMessage(this.user)
+    console.info(this.listUsers);
   }
   /*
   * @ToDo
@@ -44,6 +45,9 @@ export class AppComponent implements OnInit{
   /*
   * @ToDo
   * */
-  SaveListUsersInJson(){}
+  SaveListUsersInJson(){
+    console.info(this.listUsers);
+    this.userService.updateUsers(this.listUsers).subscribe(data=>this.updateUser);
+  }
 
 }

@@ -5,6 +5,7 @@
     (user_up)=updateUser($event)
 ></app-config-side-bar>
 <button (click)="LoadListUsersFromJson()">Upload</button>
+<button (click)="SaveListUsersInJson()">Save</button>
 <app-user-card  *ngFor="let u of listUsers;let i= index"
     [user]="u" 
     [user_index]="i" 
