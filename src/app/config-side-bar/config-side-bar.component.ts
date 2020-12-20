@@ -24,13 +24,14 @@ export class ConfigSideBarComponent implements OnChanges {
     this.nombre_enfants=changes['user'].currentValue.nombre_enfants;
    console.log(changes['user']);
    console.log(changes['user'].currentValue);
-   this.data.currentMessage.subscribe(message => this.comUser = message)
+   this.data.currentMessage.subscribe(message => this.user = message)
 
   }
   sendLastName(){
     this.user.nom=this.nom;
     this.user_up.emit(this.user);
     this.data.changeMessage(this.user);
+    console.info("sendLastName: ");
   }
   sendFirstName(){
     this.user.prenom=this.prenom;

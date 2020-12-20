@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {User} from './entity/User';
 import { ApiUsersService } from './services/api-users.service';
 import { ComponentCommunicationService } from './services/component-communication.service';
@@ -9,7 +9,7 @@ import { DataService } from './services/data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit,OnChanges{
   title = 'test-technique';
   listUsers:User[]=[];
   user:User;
@@ -18,7 +18,12 @@ export class AppComponent implements OnInit{
   constructor(private userService : ApiUsersService,private data: DataService){}
   ngOnInit(): void {
     this.LoadListUsersFromJson();
-    this.data.currentMessage.subscribe(message => this.comUser = message)
+    this.data.currentMessage.subscribe(message => this.user = message);
+    
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.info("listChange");
+    console.info(this.listUsers)
   }
   getIndex(i:number){
     this.index=i;
@@ -28,7 +33,9 @@ export class AppComponent implements OnInit{
   }
   updateUser(user:User){
     this.listUsers[this.index]=user;
-    this.data.changeMessage(this.user)
+    this.user=user;
+    this.data.changeMessage(this.user);
+    console.info("updateUser");
     console.info(this.listUsers);
   }
   /*

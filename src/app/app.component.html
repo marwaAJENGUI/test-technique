@@ -12,10 +12,12 @@
         </tr>
     </table>
     <br>
-    <app-user-card *ngFor="let u of listUsers;let i= index"
-        [user]="u" 
+    <app-user-card *ngFor="let user of listUsers;let i= index"
+        [user]="user" 
         [user_index]="i" 
         (index)=getIndex($event)
         (user_up)=updateUser($event)
-    ></app-user-card>
+        (click)=getIndex(i)
+    >
+    </app-user-card>
 </div>
